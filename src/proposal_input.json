@@ -1,0 +1,55 @@
+﻿[
+    {
+        "id": "_id",
+        "label": "Project ID"
+    },
+    {
+        "id": "title",
+        "label": "Title",
+        "fullWidth": "true"
+    },
+    {
+        "id": "short_name",
+        "label": "Short Title",
+        "fullWidth": "true"
+    },
+    {
+        "id": "abstract",
+        "label": "Abstract",
+        "fullWidth": "true"
+    },
+    {
+        "id": "science_theme",
+        "label": "Science Theme"
+    },
+    {
+        "id": "submitted_date",
+        "type": "date",
+        "label": "Submitted Date"
+    },
+    {
+        "id": "closed_date",
+        "type": "date",
+        "label": "Closed Date"
+    },
+    {
+        "id": "accepted_date",
+        "type": "date",
+        "label": "Accepted Date"
+    },
+    {
+        "id": "suspense_date",
+        "type": "date",
+        "label": "Suspense Date"
+    },
+    {
+        "id": "actual_start_date",
+        "type": "date",
+        "label": "Actual Start Date"
+    },
+    {
+        "id": "actual_end_date",
+        "type": "date",
+        "label": "Actual End Date"
+    }
+]

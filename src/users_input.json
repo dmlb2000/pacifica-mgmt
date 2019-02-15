@@ -1,0 +1,26 @@
+﻿[
+    {
+        "id": "_id",
+        "label": "User ID"
+    },
+    {
+        "id": "network_id",
+        "label": "Network ID"
+    },
+    {
+        "id": "first_name",
+        "label": "First Name"
+    },
+    {
+        "id": "middle_initial",
+        "label": "Middle Initial"
+    },
+    {
+        "id": "last_name",
+        "label": "Last Name"
+    },
+    {
+        "id": "email_address",
+        "label": "EMail"
+    }
+]

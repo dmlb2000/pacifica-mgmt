@@ -1,0 +1,43 @@
+{
+  "name": "pacifica-mgmt",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "axios": "^0.18.0",
+    "copyfiles": "^2.1.0",
+    "formik": "^1.5.0",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "react-modal": "^3.8.1",
+    "react-scripts": "2.1.5",
+    "react-table": "^6.9.2",
+    "yup": "^0.26.10"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "eslint": "eslint --fix src/*.js",
+    "beautify": "js-beautify src/*.js",
+    "deploy": "copyfiles -u 1 build/* build/*/** Y:\\"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "babel-eslint": "^9.0.0",
+    "babel-loader": "^8.0.5",
+    "eslint": "5.12.0",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-react": "^7.12.4",
+    "js-beautify": "^1.8.9"
+  }
+}
