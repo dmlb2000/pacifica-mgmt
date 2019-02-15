@@ -2,46 +2,23 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
-import Axios from 'axios';
 import './PacificaTable.css';
 import edit_icon from './edit-obj.svg';
+import arrows_icon from './double_arrow.svg'
 import PacificaModal from './PacificaModal';
 import PacificaForm from './PacificaForm';
+import PacificaRelations from './PacificaRelations';
 import user_inputs from './users_input.json';
 import instrument_inputs from './instrument_input.json';
 import project_inputs from './proposal_input.json';
+import { getData } from './helper';
 
-function filtered_to_where_args(filtered) {
-    let where_arg_list = [];
-    for (let i = 0; i < filtered.length; i++) {
-        if (filtered[i].id === '_id') {
-            return `_id=${filtered[i].value}`;
-        }
-        where_arg_list.push(`${filtered[i].id}=${filtered[i].value}%&${filtered[i].id}_operator=like`)
-    }
-    return where_arg_list.join('&')
-}
-
-function getData(md_url, object, filtered, pageSize, pageNum, saveData, savePages) {
-    let where_args = filtered_to_where_args(filtered)
-    // fetch your data
-    Axios.get(`${md_url}/objectinfo/${object}?${where_args}`)
-        .then((res) => {
-            // Update react-table
-            savePages(Math.ceil(res.data.record_count / pageSize));
-            Axios.get(`${md_url}/${object}?items_per_page=${pageSize}&page_number=${pageNum + 1}&${where_args}`)
-                .then((res) => {
-                    // Update react-table
-                    saveData(res.data);
-                })
-        })
-}
 
 class PacificaTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: [],
+            data: [{ _id: 1 }],
             filtered: [],
             pages: -1,
             pageNum: 0,
@@ -57,9 +34,28 @@ class PacificaTable extends Component {
         }
         return (
             <div>
+                <PacificaModal
+                    action='Create'
+                    obj_nice_name={this.props.object_nice_name}
+                    obj_name={this.props.object}
+                    onCloseRefresh={() => {
+                        getData(
+                            this.props.md_url,
+                            this.props.object,
+                            this.state.filtered,
+                            this.state.pageSize,
+                            this.state.pageNum,
+                            (data) => { this.setState({ data: data }) },
+                            (pages) => { this.setState({ pages: pages }) }
+                        )
+                    }}
+                >
+                    <PacificaForm inputs={input_map[this.props.object]} md_url="/mdapi" object={this.props.object} method="put" />
+                </PacificaModal>
                 <ReactTable
                     filterable={true}
                     data={this.state.data}
+                    pages={this.state.pages}
                     columns={
                         [
                             {
@@ -69,6 +65,7 @@ class PacificaTable extends Component {
                                 Cell: row => (
                                     <div>
                                         <PacificaModal
+                                            className="PacificaFloatLeft"
                                             action='Edit'
                                             action_image={
                                                 <img src={edit_icon} alt="Edit" style={{ width: '20px' }} />
@@ -101,6 +98,22 @@ class PacificaTable extends Component {
                                                         (data) => { saveValues(data[0]) }, () => { }
                                                     )
                                                 }} />
+                                        </PacificaModal>
+                                        <PacificaModal
+                                            className="PacificaFloatRight"
+                                            action='Relationships'
+                                            action_image={
+                                                <img src={arrows_icon} alt="" style={{ width: '20px' }} />
+                                            }
+                                            obj_nice_name={this.props.object_nice_name}
+                                            obj_name={this.props.object}
+                                        >
+                                            <PacificaRelations
+                                                md_url={this.props.md_url}
+                                                object={this.props.object}
+                                                object_nice_name={this.props.object_nice_name}
+                                                object_id={row.row._id}
+                                            />
                                         </PacificaModal>
                                     </div>
                                 )

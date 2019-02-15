@@ -1,22 +1,19 @@
-﻿[
+[
     {
         "id": "_id",
         "label": "Project ID"
     },
     {
         "id": "title",
-        "label": "Title",
-        "fullWidth": "true"
+        "label": "Title"
     },
     {
         "id": "short_name",
-        "label": "Short Title",
-        "fullWidth": "true"
+        "label": "Short Title"
     },
     {
         "id": "abstract",
-        "label": "Abstract",
-        "fullWidth": "true"
+        "label": "Abstract"
     },
     {
         "id": "science_theme",

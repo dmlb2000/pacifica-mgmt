@@ -1,1 +1,18 @@
-﻿[]
+[
+    {
+        "id": "_id",
+        "label": "Instrument ID"
+    },
+    {
+        "id": "display_name",
+        "label": "Display Name"
+    },
+    {
+        "id": "name",
+        "label":  "Name"
+    },
+    {
+        "id": "name_short",
+        "label": "Short Name"
+    }
+]

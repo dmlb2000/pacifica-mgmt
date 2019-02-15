@@ -43,7 +43,7 @@ class PacificaModal extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className={this.props.className}>
                 <Button onClick={this.openModal}>{this.props.action_image ? this.props.action_image : this.props.action}</Button>
                 <Modal
                     isOpen={this.state.modalIsOpen}

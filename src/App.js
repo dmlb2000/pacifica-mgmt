@@ -6,11 +6,6 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import PacificaTable from './PacificaTable';
-import PacificaModal from './PacificaModal';
-import PacificaForm from './PacificaForm';
-import user_inputs from './users_input.json';
-import project_inputs from './proposal_input.json';
-import instrument_inputs from './instrument_input.json';
 import './App.css';
 import './Tabs.css';
 
@@ -62,9 +57,6 @@ class App extends Component {
                 </AppBar>
                 {value === 0 &&
                     <TabContainer>
-                        <PacificaModal action='Create' obj_nice_name='User' obj_name='users'>
-                            <PacificaForm inputs={user_inputs} md_url="/mdapi" object="users" method="put"/>
-                        </PacificaModal>
                         <PacificaTable
                         md_url="/mdapi"
                         object="users"
@@ -90,9 +82,6 @@ class App extends Component {
                     </TabContainer>}
                 {value === 1 &&
                     <TabContainer>
-                    <PacificaModal action='Create' obj_nice_name='Project' obj_name='projects'>
-                        <PacificaForm inputs={project_inputs} md_url="/mdapi" object="proposals" method="put"/>
-                    </PacificaModal>
                     <PacificaTable
                         md_url="/mdapi"
                         object="proposals"
@@ -115,9 +104,6 @@ class App extends Component {
                     </TabContainer>}
                 {value === 2 &&
                     <TabContainer>
-                    <PacificaModal action='Create' obj_nice_name='Instrument' obj_name='instruments'>
-                        <PacificaForm inputs={instrument_inputs} md_url="/mdapi" object="instruments" method="put" />
-                    </PacificaModal>
                     <PacificaTable
                         md_url="/mdapi"
                         object="instruments"

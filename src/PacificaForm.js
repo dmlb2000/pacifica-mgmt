@@ -23,10 +23,11 @@ class PacificaForm extends Component {
         initialValues: {}
     }
     handleSubmit = props => (values, { setSubmitting }) => {
-        Axios[props.method](`${props.md_url}/${props.object}`, values)
+        Axios[props.method](`${props.md_url}/${props.object}`, Object.assign(values, props.additionalValues))
             .then((res) => {
                 // Update react-table
                 setSubmitting(false);
+                props.postSubmitHook();
             })
     }
     componentDidMount() {
@@ -90,7 +91,9 @@ class PacificaForm extends Component {
 }
 
 PacificaForm.defaultProps = {
-    initialValues: () => { }
+    initialValues: () => { },
+    postSubmitHook: () => { },
+    additionalValues: {}
 }
 PacificaForm.propTypes = {
     classes: PropTypes.object.isRequired,
